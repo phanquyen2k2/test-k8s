@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app
+spec:
+  replicas: 3    # Số lượng replicas (phiên bản ứng dụng) bạn muốn triển khai.
+  selector:
+    matchLabels:
+      app: sample-app
+  template:
+    metadata:
+      labels:
+        app: sample-app
+    spec:
+      containers:
+      - name: app-container
+        image: silver2512/hello-k8s:1.0   # Thay thế bằng image của ứng dụng bạn muốn triển khai.
+        ports:
+        - containerPort: 80   # Cổng mà ứng dụng lắng nghe.
